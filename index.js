@@ -68,14 +68,18 @@ class SearchProvider {
   }
 
   /**
-   * Perform a search query on the input.
+   * Perform a search query on the input. Search results are sorted by relevance.
    * 
    * @param {string} query The search query.
    * 
    * @returns {object[]}
    */
   query(query) {
-    return this._input.filter(record => this.matches(record, query));
+    return this._input
+      .map(record => ({ record, relevance: this.getRelevance(record, query) }))
+      .filter(record => record.relevance > 0)
+      .sort((a, b) => a.relevance === b.relevance ? 0 : (a.relevance > b.relevance ? -1 : 1))
+      .map(record => record.record);
   }
 
   /**
