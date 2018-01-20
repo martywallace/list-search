@@ -21,7 +21,7 @@ merging those lists together.
 ## examples
 
 ```
-const search = require('./index');
+const search = require('list-search');
 
 const provider = search([
   { name: 'test' },
