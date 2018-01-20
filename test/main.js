@@ -15,6 +15,13 @@ describe('SearchProvider', () => {
   describe('#getRelevance', () => {
     it('Should correctly measure the relevance of items within a list.', () => {
       assert.strictEqual(provider.getRelevance({ name: 'test' }, 'test'), 1);
+      assert.strictEqual(provider.getRelevance({ name: 'another test' }, 'a'), 1);
+      assert.strictEqual(provider.getRelevance({ name: 'another test' }, 'te noth'), 2);
+    });
+
+    it('Should correctly reduce the input list based on query criteria.', () => {
+      assert.strictEqual(provider.query('test').length, 4);
+      assert.strictEqual(provider.query('t tube').length, 2);
     });
   });
 });
