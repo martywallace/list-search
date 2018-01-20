@@ -18,7 +18,9 @@ describe('SearchProvider', () => {
       assert.strictEqual(provider.getRelevance({ name: 'another test' }, 'a'), 1);
       assert.strictEqual(provider.getRelevance({ name: 'another test' }, 'te noth'), 2);
     });
+  });
 
+  describe('#query', () => {
     it('Should correctly reduce the input list based on query criteria.', () => {
       assert.strictEqual(provider.query('test').length, 4);
       assert.strictEqual(provider.query('t tube').length, 2);
