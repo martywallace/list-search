@@ -22,6 +22,14 @@ class SearchProvider {
       }
       
       if (queryTree.length <= compareTree.length) {
+        const compareFull = compareTree.join('');
+
+        for (let queryBranch of queryTree) {
+          if (compareFull.indexOf(queryBranch) === -1) {
+            return 0;
+          }
+        }
+        
         return compareTree.reduce((total, compareBranch) => {
           for (let queryBranch of queryTree) {
             if (compareBranch.indexOf(queryBranch) >= 0) {
@@ -35,8 +43,6 @@ class SearchProvider {
     } else {
       throw new Error('Record does not contain all the required fields.');
     }
-
-    return 0;
   }
 
   /**
@@ -68,6 +74,21 @@ class SearchProvider {
   }
 
   /**
+   * Perform a search query on the input and return each record and its
+   * relevance as a new array.
+   * 
+   * @param {string} query The search query.
+   * 
+   * @returns {object[]}
+   */
+  queryRelevance(query) {
+    return this._input.map(record => ({
+      record,
+      relevance: this.getRelevance(record, query)
+    }));
+  }
+
+  /**
    * Perform a search query on the input. Search results are sorted by relevance.
    * 
    * @param {string} query The search query.
@@ -75,8 +96,7 @@ class SearchProvider {
    * @returns {object[]}
    */
   query(query) {
-    return this._input
-      .map(record => ({ record, relevance: this.getRelevance(record, query) }))
+    return this.queryRelevance(query)
       .filter(record => record.relevance > 0)
       .sort((a, b) => a.relevance === b.relevance ? 0 : (a.relevance > b.relevance ? -1 : 1))
       .map(record => record.record);

@@ -30,11 +30,8 @@ const provider = search([
   { name: 'yet another test again' }
 ], ['name']);
 
-console.log(provider.getRelevance({ name: 'test' }, 'te'));
-console.log(provider.getRelevance({ name: 'test tent' }, 'te'));
-
-console.log(provider.query('test'));
-console.log(provider.query('a'));
-console.log(provider.query('test nother'));
-console.log(provider.query('a t'));
+console.log(provider.query('test').length); // 4
+console.log(provider.query('a').length); // 3
+console.log(provider.query('again test').length); // 1
+console.log(provider.query('yet').length); // 2
 ```
