@@ -1,0 +1,11 @@
+{
+  "name": "list-search",
+  "version": "0.1.0",
+  "description": "A basic search functionality for lists.",
+  "license": "MIT",
+  "author": {
+    "name": "Marty Wallace",
+    "email": "marty@martywallace.com",
+    "url": "https://ascensionwd.com.au"
+  }
+}
