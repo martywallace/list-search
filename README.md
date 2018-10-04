@@ -7,7 +7,7 @@ Simple search implementation for a list of objects.
 ## installation
 
 ```
-$npm install --save list-search
+$ yarn add list-search
 ```
 
 ## usage
@@ -22,7 +22,7 @@ merging those lists together.
 
 ## examples
 
-```
+```javascript
 const search = require('list-search');
 
 const provider = search([
