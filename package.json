@@ -6,7 +6,7 @@
   "author": {
     "name": "Marty Wallace",
     "email": "marty@martywallace.com",
-    "url": "https://ascensionwd.com.au"
+    "url": "https://martywallace.com"
   },
   "scripts": {
     "test": "node_modules/.bin/mocha"
