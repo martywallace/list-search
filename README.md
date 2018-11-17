@@ -1,6 +1,6 @@
 # list-search
 
-[![Build Status](https://travis-ci.org/ascensionwd/list-search.svg?branch=master)](https://travis-ci.org/ascensionwd/list-search)
+[![Build Status](https://travis-ci.org/martywallace/list-search.svg?branch=master)](https://travis-ci.org/martywallace/list-search)
 
 Simple search implementation for a list of objects.
 
